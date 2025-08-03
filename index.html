@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DockyHost - Free Hosting for Life</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="fav.png">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2L5B47VSGK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2L5B47VSGK');
+    </script>
+    <style>
+      :root {
+        --primary: #4361ee;
+        --primary-dark: #3a0ca3;
+        --primary-light: #4895ef;
+        --secondary: #4cc9f0;
+        --accent: #f72585;
+        --light: #f8f9fa;
+        --light-gray: #e9ecef;
+        --medium-gray: #adb5bd;
+        --dark-gray: #495057;
+        --dark: #212529;
+        --darker: #1a1e21;
+        --card-bg: #ffffff;
+        --radius: 12px;
+        --radius-lg: 16px;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.08);
+        --shadow-lg: 0 15px 50px rgba(0, 0, 0, 0.1);
+        --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      /* Dark mode variables */
+      body.dark-mode {
+        --primary: #4361ee;
+        --primary-dark: #3a0ca3;
+        --primary-light: #4895ef;
+        --secondary: #4cc9f0;
+        --accent: #f72585;
+        --light: #121212;
+        --light-gray: #1e1e1e;
+        --medium-gray: #3d3d3d;
+        --dark-gray: #a0a0a0;
+        --dark: #e0e0e0;
+        --darker: #181818;
+        --card-bg: #1e1e1e;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.08);
+        --shadow-lg: 0 15px 50px rgba(0, 0, 0, 0.1);
+        --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      /* Base styles */
+      body, html {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--light);
+        color: var(--dark);
+        line-height: 1.6;
+        min-height: 100vh;
+        scroll-behavior: smooth;
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      * {
+        box-sizing: border-box;
+      }
+      
+      /* Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      
+      /* Typography */
+      h1, h2, h3, h4, h5, h6 {
+        font-weight: 700;
+        line-height: 1.2;
+        margin-top: 0;
+      }
+      
+      h1 {
+        font-size: 3rem;
+      }
+      
+      h2 {
+        font-size: 2.25rem;
+      }
+      
+      h3 {
+        font-size: 1.5rem;
+      }
+      
+      p {
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+        color: var(--dark-gray);
+      }
+      
+      body.dark-mode p {
+        color: var(--dark-gray);
+      }
+      
+      /* Header */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--card-bg);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      
+      .logo {
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: none;
+        gap: 12px;
+      }
+      
+      .logo i {
+        font-size: 1.8rem;
+        color: var(--primary);
+      }
+      
+      .nav-links {
+        display: flex;
+        gap: 32px;
+      }
+      
+      .nav-links a {
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1rem;
+        transition: color var(--transition);
+        position: relative;
+      }
+      
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+      
+      .nav-links a:after {
+        content: '';
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: width var(--transition);
+      }
+      
+      .nav-links a:hover:after {
+        width: 100%;
+      }
+      
+      /* Buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 28px;
+        border-radius: var(--radius);
+        font-weight: 600;
+        font-size: 1rem;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: all var(--transition);
+        white-space: nowrap;
+      }
+      
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+        box-shadow: 0 4px 14px rgba(67, 97, 238, 0.3);
+      }
+      
+      .btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+      }
+      
+      .btn-outline {
+        background: transparent;
+        color: var(--primary);
+        border: 1px solid var(--primary);
+      }
+      
+      .btn-outline:hover {
+        background: rgba(67, 97, 238, 0.1);
+      }
+      
+      /* Hero section */
+      .hero {
+        padding: 120px 0 80px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .hero:before {
+        content: '';
+        position: absolute;
+        top: -100px;
+        left: -100px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(67, 97, 238, 0.1) 0%, rgba(67, 97, 238, 0) 70%);
+        z-index: -1;
+      }
+      
+      .hero:after {
+        content: '';
+        position: absolute;
+        bottom: -100px;
+        right: -100px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(76, 201, 240, 0.1) 0%, rgba(76, 201, 240, 0) 70%);
+        z-index: -1;
+      }
+      
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 24px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        line-height: 1.1;
+      }
+      
+      .hero p {
+        font-size: 1.25rem;
+        max-width: 700px;
+        margin: 0 auto 48px;
+        color: var(--dark-gray);
+      }
+      
+      .hero-actions {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+      }
+      
+      /* Features section */
+      .features {
+        padding: 100px 0;
+      }
+      
+      .section-title {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+      
+      .section-title h2 {
+        margin-bottom: 16px;
+      }
+      
+      .section-title p {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 32px;
+      }
+      
+      .feature-card {
+        background: var(--card-bg);
+        border-radius: var(--radius-lg);
+        padding: 40px 32px;
+        box-shadow: var(--shadow);
+        transition: transform var(--transition), box-shadow var(--transition);
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--light-gray);
+      }
+      
+      body.dark-mode .feature-card {
+        border-color: var(--medium-gray);
+      }
+      
+      .feature-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+      }
+      
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: rgba(67, 97, 238, 0.1);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        color: var(--primary);
+        font-size: 1.5rem;
+      }
+      
+      .feature-card h3 {
+        margin-bottom: 16px;
+      }
+      
+      /* Pricing section */
+      .pricing {
+        padding: 100px 0;
+        background: var(--light-gray);
+      }
+      
+      body.dark-mode .pricing {
+        background: var(--darker);
+      }
+      
+      .pricing-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 32px;
+        margin-top: 48px;
+      }
+      
+      .pricing-card {
+        background: var(--card-bg);
+        border-radius: var(--radius-lg);
+        padding: 48px 32px;
+        box-shadow: var(--shadow);
+        transition: transform var(--transition), box-shadow var(--transition);
+        position: relative;
+        border: 1px solid var(--light-gray);
+      }
+      
+      body.dark-mode .pricing-card {
+        border-color: var(--medium-gray);
+      }
+      
+      .pricing-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+      }
+      
+      .pricing-card.popular {
+        border: 1px solid var(--primary);
+        box-shadow: 0 8px 30px rgba(67, 97, 238, 0.15);
+      }
+      
+      .popular-badge {
+        position: absolute;
+        top: 0;
+        right: 32px;
+        transform: translateY(-50%);
+        background: var(--primary);
+        color: white;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+      
+      .pricing-card h3 {
+        margin-bottom: 16px;
+      }
+      
+      .price {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: var(--primary);
+      }
+      
+      .price span {
+        font-size: 1rem;
+        color: var(--medium-gray);
+        font-weight: 400;
+      }
+      
+      .pricing-features {
+        margin: 32px 0;
+        padding: 0;
+        list-style: none;
+      }
+      
+      .pricing-features li {
+        margin-bottom: 16px;
+        padding-left: 28px;
+        position: relative;
+      }
+      
+      .pricing-features li:before {
+        content: '\f00c';
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+      }
+      
+      /* FAQ section */
+      .faq {
+        padding: 100px 0;
+      }
+      
+      .accordion {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      
+      .accordion-item {
+        margin-bottom: 16px;
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid var(--light-gray);
+      }
+      
+      body.dark-mode .accordion-item {
+        border-color: var(--medium-gray);
+      }
+      
+      .accordion-header {
+        padding: 20px 24px;
+        background: var(--card-bg);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        transition: background var(--transition);
+      }
+      
+      .accordion-header:hover {
+        background: rgba(67, 97, 238, 0.05);
+      }
+      
+      .accordion-icon {
+        transition: transform var(--transition);
+      }
+      
+      .accordion-item.active .accordion-icon {
+        transform: rotate(180deg);
+      }
+      
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .accordion-content-inner {
+        padding: 0 24px 24px;
+      }
+      
+      /* CTA section */
+      .cta-section {
+        padding: 100px 0;
+        text-align: center;
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .cta-section:before {
+        content: '';
+        position: absolute;
+        top: -100px;
+        left: -100px;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+        z-index: 0;
+      }
+      
+      .cta-section:after {
+        content: '';
+        position: absolute;
+        bottom: -100px;
+        right: -100px;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+        z-index: 0;
+      }
+      
+      .cta-section .container {
+        position: relative;
+        z-index: 1;
+      }
+      
+      .cta-section h2 {
+        margin-bottom: 24px;
+        color: white;
+      }
+      
+      .cta-section p {
+        max-width: 600px;
+        margin: 0 auto 48px;
+        color: rgba(255, 255, 255, 0.9);
+      }
+      
+      /* Footer */
+      footer {
+        background: var(--darker);
+        color: var(--dark);
+        padding: 80px 0 24px;
+      }
+      
+      body.dark-mode footer {
+        background: #121212;
+      }
+      
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 48px;
+        margin-bottom: 48px;
+      }
+      
+      .footer-column h3 {
+        font-size: 1.1rem;
+        margin-bottom: 24px;
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      
+      .footer-column ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .footer-column ul li {
+        margin-bottom: 12px;
+      }
+      
+      .footer-column ul li a {
+        color: var(--dark-gray);
+        text-decoration: none;
+        transition: color var(--transition);
+      }
+      
+      .footer-column ul li a:hover {
+        color: var(--primary);
+      }
+      
+      .social-links {
+        display: flex;
+        gap: 16px;
+        margin-top: 24px;
+      }
+      
+      .social-links a {
+        color: var(--dark-gray);
+        font-size: 1.25rem;
+        transition: color var(--transition), transform var(--transition);
+      }
+      
+      .social-links a:hover {
+        color: var(--primary);
+        transform: translateY(-2px);
+      }
+      
+      .footer-bottom {
+        text-align: center;
+        padding-top: 24px;
+        border-top: 1px solid var(--light-gray);
+        color: var(--medium-gray);
+        font-size: 0.9rem;
+      }
+      
+      body.dark-mode .footer-bottom {
+        border-top-color: var(--medium-gray);
+      }
+      
+      /* Dark mode toggle */
+      .darkmode-toggle {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 1000;
+        width: 48px;
+        height: 48px;
+        background: var(--card-bg);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: var(--shadow-md);
+        border: none;
+        color: var(--dark);
+        transition: all var(--transition);
+      }
+      
+      .darkmode-toggle:hover {
+        transform: scale(1.1);
+      }
+      
+      /* Responsive adjustments */
+      @media (max-width: 992px) {
+        h1 {
+          font-size: 2.5rem;
+        }
+        
+        h2 {
+          font-size: 2rem;
+        }
+        
+        .hero {
+          padding: 80px 0;
+        }
+        
+        .features, .pricing, .faq, .cta-section {
+          padding: 80px 0;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        nav {
+          flex-direction: column;
+          gap: 20px;
+          padding: 20px 0;
+        }
+        
+        .nav-links {
+          gap: 20px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        
+        .hero-actions {
+          flex-direction: column;
+          align-items: center;
+        }
+        
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+        
+        .hero p {
+          font-size: 1.1rem;
+        }
+        
+        .features-grid, .pricing-cards {
+          grid-template-columns: 1fr;
+        }
+        
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 16px;
+        }
+        
+        h1 {
+          font-size: 2rem;
+        }
+        
+        h2 {
+          font-size: 1.75rem;
+        }
+        
+        .hero {
+          padding: 60px 0;
+        }
+        
+        .features, .pricing, .faq, .cta-section {
+          padding: 60px 0;
+        }
+        
+        .feature-card, .pricing-card {
+          padding: 32px 24px;
+        }
+      }
+      
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .fade-in {
+        animation: fadeIn 0.8s ease-out forwards;
+      }
+      
+      .delay-1 {
+        animation-delay: 0.1s;
+      }
+      
+      .delay-2 {
+        animation-delay: 0.2s;
+      }
+      
+      .delay-3 {
+        animation-delay: 0.3s;
+      }
+      
+      .delay-4 {
+        animation-delay: 0.4s;
+      }
+      
+      /* Status badge */
+      .status-badge {
+        text-align: center;
+        margin: 40px 0;
+      }
+    </style>
+</head>
+<body>
+    <!-- Dark mode toggle -->
+    <button class="darkmode-toggle" id="darkmodeToggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon" id="darkmodeIcon"></i>
+    </button>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <i class="fas fa-server"></i> DockyHost
+                </a>
+                <div class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="https://discord.gg/AnGGamyz" target="_blank">Support</a>
+                </div>
+                <a href="#cta" class="btn btn-primary">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="fade-in">Free Hosting for Life</h1>
+            <p class="fade-in delay-1">DockyHost offers you 1 free server per account, with no hidden fees and no service interruptions. Perfect for your personal or professional projects.</p>
+            <div class="hero-actions fade-in delay-2">
+                <a href="#cta" class="btn btn-primary">Create Free Account</a>
+                <a href="#features" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Why Choose DockyHost?</h2>
+                <p>We provide reliable hosting solutions with a focus on simplicity and performance.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3>Free for Life</h3>
+                    <p>Enjoy our services without ever paying. No hidden fees, no surprises.</p>
+                </div>
+                <div class="feature-card fade-in delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>High Performance</h3>
+                    <p>Our servers use fast processors and SSD storage for optimal performance.</p>
+                </div>
+                <div class="feature-card fade-in delay-3">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Enhanced Security</h3>
+                    <p>DDoS protection, automatic backups, and server isolation for maximum security.</p>
+                </div>
+                <div class="feature-card fade-in delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>Full Control</h3>
+                    <p>Root access, file and process management, and remote server restarts.</p>
+                </div>
+                <div class="feature-card fade-in delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Our team is available anytime to assist you via Discord or our ticket system.</p>
+                </div>
+                <div class="feature-card fade-in delay-3">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>99.87% Uptime</h3>
+                    <p>Our infrastructure ensures your servers are always online with minimal downtime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Simple Pricing</h2>
+                <p>Choose the plan that fits your needs. Start for free, upgrade anytime.</p>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card fade-in delay-1">
+                    <h3>Free</h3>
+                    <div class="price">0€ <span>/ lifetime</span></div>
+                    <ul class="pricing-features">
+                        <li>1 server included</li>
+                        <li>1 GB RAM per server</li>
+                        <li>5 GB SSD storage</li>
+                        <li>1 vCPU per server</li>
+                        <li>Full root access</li>
+                        <li>Community support</li>
+                    </ul>
+                    <a href="#cta" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our service.</p>
+            </div>
+            <div class="accordion">
+                <div class="accordion-item fade-in delay-1">
+                    <div class="accordion-header">
+                        <span>How can I create an account?</span>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Creating an account on DockyHost is simple and quick. Click the "Create an Account" button at the top of the page, choose a username and password, and that's it! You can immediately start creating your servers.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item fade-in delay-2">
+                    <div class="accordion-header">
+                        <span>Are there really no hidden fees?</span>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Absolutely! Our free plan is truly free for life, with no hidden fees. We earn through our premium users who choose to support our service and gain additional features.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item fade-in delay-3">
+                    <div class="accordion-header">
+                        <span>What types of servers can I host?</span>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>You can host almost any type of server: games (Minecraft, FiveM, etc.), websites, applications, databases, Discord bots, and more. The only limitation is that your usage must comply with our terms of service.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item fade-in delay-1">
+                    <div class="accordion-header">
+                        <span>How can I manage my servers?</span>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>We provide an intuitive control panel where you can start, stop, restart your servers, manage files, view real-time logs, and configure settings. You also have full SSH access for advanced control.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item fade-in delay-2">
+                    <div class="accordion-header">
+                        <span>What are the limits of free servers?</span>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Free servers can run 24/7 but with limited resources (1 GB RAM, 1 vCPU). If your server uses too many resources for an extended period, it may be temporarily limited to ensure fair distribution among all users.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Status badge -->
+    <div class="status-badge fade-in delay-3">
+      <a href="https://uptime.betterstack.com/?utm_source=status_badge" target="_blank">
+        <img src="https://uptime.betterstack.com/status-badges/v3/monitor/1ztm7.svg" alt="Better Stack Badge">
+      </a>
+    </div>
+
+    <!-- CTA section -->
+    <section id="cta" class="cta-section">
+        <div class="container">
+            <h2 class="fade-in">Ready to Get Started?</h2>
+            <p class="fade-in delay-1">Create your free account now and get up to 1 server at no cost. No credit card required.</p>
+            <a href="http://91.169.161.97:64000/auth/login" class="btn btn-outline fade-in delay-2" style="color: white; border-color: white;">Sign Up for Free</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column fade-in">
+                    <h3>DockyHost</h3>
+                    <p>The free hosting provider that offers you powerful servers with no hidden fees.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column fade-in delay-1">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column fade-in delay-2">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column fade-in delay-3">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="https://discord.gg/AnGGamyz" target="_blank">Discord Server</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="https://graphy-host.betteruptime.com/" target="_blank">Check Status</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom fade-in delay-1">
+                <p>&copy; 2025 DockyHost. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all items first
+                document.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                
+                // Open current if it was closed
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                
+                // Redirect if href is "#"
+                if (href === "#") {
+                    window.location.href = "http://91.169.161.97:64000/auth/login";
+                    return;
+                }
+
+                const target = document.querySelector(href);
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Dark mode switcher
+        function setDarkMode(enabled) {
+            if (enabled) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('darkMode', '1');
+                document.getElementById('darkmodeIcon').className = 'fas fa-sun';
+            } else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('darkMode', '0');
+                document.getElementById('darkmodeIcon').className = 'fas fa-moon';
+            }
+        }
+        
+        document.getElementById('darkmodeToggle').addEventListener('click', function() {
+            setDarkMode(!document.body.classList.contains('dark-mode'));
+        });
+        
+        // Initialize dark mode
+        (function() {
+            const dark = localStorage.getItem('darkMode') === '1';
+            setDarkMode(dark);
+        })();
+        
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
